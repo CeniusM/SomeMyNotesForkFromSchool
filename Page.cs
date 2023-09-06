@@ -1,17 +1,9 @@
 public class Page
 {
-    public string Content;
+    public string Content { get; }
+
     public Page(string content)
     {
         Content = content;
-    }
-
-    public void Read()
-    {
-        Console.Clear();
-        Console.WriteLine("\nPage contents:");
-        Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Book.WriteLine(Content);
-        Console.ResetColor();
     }
 }

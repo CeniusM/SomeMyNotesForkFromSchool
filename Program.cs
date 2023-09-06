@@ -1,33 +1,21 @@
-﻿Book book = new Book("Programming notes");
-List<Chapter> chapters = new List<Chapter>();
+﻿
 
-Chapter variablesChapter = new Chapter("Vars");
-chapters.Add(variablesChapter);
+using System.Runtime.InteropServices;
 
-List<Page> variablesPages = new List<Page>();
-Page variablesPage = new Page(MyNotes.VariablesPageOne);
-Page variablesPageTwo = new Page(MyNotes.VariablesPageTwo);
-variablesPages.Add(variablesPage);
-variablesPages.Add(variablesPageTwo);
+// Just testing :)
 
-variablesChapter.Pages = variablesPages;
-book.Chapters = chapters;
+void PrintSize<T>() where T : unmanaged
+{
+    T a = new T();
+    Console.WriteLine(a.GetType().Name + " is " + Marshal.SizeOf<T>() + "bytes and " + Marshal.SizeOf<T>() * 8 + "bits");
+}
 
-book.Start();
+PrintSize<float>();
+PrintSize<double>();
+PrintSize<decimal>();
+PrintSize<char>();
+PrintSize<bool>();
+PrintSize<int>();
+PrintSize<long>();
 
-
-
-// Ved brug af constructor chaining kan vi gøre ovenstående mere læsbart:
-Book book2 = new Book("Programming notes", new List<Chapter>(){
-    new Chapter("Vars", new List<Page>(){
-        new Page(MyNotes.VariablesPageOne),
-        new Page(MyNotes.VariablesPageTwo)
-    }),
-    new Chapter("Unity", new List<Page>(){
-        //new Page(MyNotes.UnityPageOne),
-        //new Page(MyNotes.UnityPageTwo),
-        //new Page(MyNotes.UnityPageThree)
-    })
-});
-
-//book2.Start();
+Console.ReadLine();
